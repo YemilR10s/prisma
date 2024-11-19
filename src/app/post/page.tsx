@@ -1,24 +1,26 @@
+'user server'
 import Link from "next/link"
 import prisma from "../lib/db"
 import createPost from "../actions/actions"
 
 export default async function PostsPage(){
 
-  /*   const myPosts = await prisma.post.findMany() */
-       const myUser = await prisma.user.findUnique({
+    /* const myPosts = await prisma.post.findMany() */
+
+    const users = await prisma.user.findUnique({
         where:{
-            email: 'Yemil@yemil.com'
+            email: 'yemil@elpaspi.com'
         },
         include:{
             posts: true
         }
-       })
-
+    })
+  
     return(
         <div className="h-screen flex flex-col justify-center items-center">
-            <h1>We have ({myUser?.posts.length}) Post</h1>
+            <h1>We have ({users?.posts.length}) Post</h1>
             <ul>
-                {myUser?.posts.map((post)=>(
+                {users?.posts.map((post)=>(
                     <Link key={post.id} href={`/post/${post.slug}`}>
                         <li>{post.title}</li>
                     </Link>

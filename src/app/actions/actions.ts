@@ -12,12 +12,11 @@ export default async function createPost(formData:FormData) {
             content: formData.get('content') as string,
             author:{
                 connect:{
-                    email: 'yemil@yemil.com'
+                    email: 'yemil@elpaspi.com'
                 }
-            }
-        }
-    
-    })
+            },
+        }    
+})
     
     revalidatePath('/post')
 }
