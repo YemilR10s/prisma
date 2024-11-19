@@ -10,7 +10,13 @@ export default async function createPost(formData:FormData) {
             title: formData.get('title') as string,
             slug: formData.get('title') as string,
             content: formData.get('content') as string,
+            author:{
+                connect:{
+                    email: 'yemil@yemil.com'
+                }
+            }
         }
+    
     })
     
     revalidatePath('/post')
